@@ -6,7 +6,6 @@ class Board
   def initialize
     @null_piece = NullPiece.instance 
     @rows = Array.new(8) {Array.new(8, @null_piece)}
-    @rows[0][3] = Queen.new
   end
 
   
