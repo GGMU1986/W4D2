@@ -14,32 +14,38 @@ module Slideable
   ]
 
 
-  def horizontal_dirs(pos)
+  def horizontal_dirs
+    HORIZONTAL_DIRS
     
+  end
+  
+  def diagonal_dirs
+    DIAGONAL_DIRS
+  end
+  
+  
+  
+  def moves(pos)
+
+    piece_dirs = self.move_dirs  # rook.move_dirs ==> :rook
+    p piece_dirs
     possible_moves = []
     cur_x, cur_y = pos
-    HORIZONTAL_DIRS.each do |(dx, dy)|
+    piece_dirs.each do |(dx, dy)|
       # grow_unblocked_moves_dir(dx,dy)
       new_position = [cur_x + dx, cur_y + dy]
       possible_moves << new_position if new_position.all? { |coord| coord.between?(0,7)}
     end
-
+    possible_moves
+      
   end
 
-  def diagonal_dirs(pos)
-  end
-
-
-
-  def moves(pos)
-    piece_dirs = self.move_dirs  # rook.move_dirs ==> :rook
-
-    if piece_dirs == :rook
-
-
-  end
 
   private
+
+  def move_dirs
+    raise NotImplementedError
+  end
 
   def grow_unblocked_moves_dir(dx,dy)
     
