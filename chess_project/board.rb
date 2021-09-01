@@ -45,11 +45,11 @@ class Board
 
   def populate_board
     # @rows[0].each_with_index { |box, i| BACK_ROW[i].new }
-    BACK_ROW.each_with_index do |piece_class, i|
-      @rows[0][i] = piece_class.new(:white, self, [0, i])
+    (0..7).each do |i|
+      @rows[0][i] = BACK_ROW[i].new(:white, self, [0, i])
       # p @row[0]
       @rows[1][i] = Pawn.new(:white, self, [1, i])
-      # @rows[7][i] = BACK_ROW.reverse[i].new(:black, self, [7, i])
+      @rows[7][i] = BACK_ROW.reverse[i].new(:black, self, [7, i])
       @rows[6][i] = Pawn.new(:black, self, [6, i])
       # @rows.each do |row|
       #   row[i]
