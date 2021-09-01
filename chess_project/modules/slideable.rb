@@ -54,13 +54,12 @@ module Slideable
     while could_go_further
     
       new_position = [cur_x + step * dx, cur_y + step * dy]
-      on_board = new_position.all? { |coord| coord.between?(0,7)}
-      print "piece "
-      p @board[new_position]
-      if on_board && @board[new_position].is_a?(NullPiece)# @board.null_piece
+      # print "piece "
+      # p @board[new_position]
+      if @board.valid_pos?(new_position) && @board.is_null_pos(new_position)
         moves_in_dir << new_position
         step += 1
-      elsif on_board && @board[new_position].color != @color
+      elsif @board.valid_pos?(new_position) && @board[new_position].color != @color
         moves_in_dir << new_position
         could_go_further = false
       else
