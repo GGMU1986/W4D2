@@ -1,2 +1,3 @@
-require_relative "null_piece"
-require_relative "queen"
+require_relative "pieces/null_piece"
+require_relative "pieces/queen"
+require_relative "modules/slideable"

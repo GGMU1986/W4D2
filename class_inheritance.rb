@@ -27,7 +27,7 @@ class Manager < Employee
         # @employees.inject(0) { |sum, emp| sum + emp.salary } * multiplier
             emp = queue.shift
             sal_sum += emp.salary
-            queue += emp.employees if emp.is_a? Manager
+            queue += emp.employees if emp.is_a? Ma
         end
         sal_sum * multiplier
     end
