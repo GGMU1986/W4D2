@@ -1,5 +1,5 @@
 class Employee
-    attr_reader :employees, :salary
+    attr_reader :salary
     def initialize(name, title, salary, boss)
         @name = name
         @title = title
@@ -14,14 +14,14 @@ class Employee
 end
 
 class Manager < Employee
-
+    attr_reader :employees
     def initialize(name, title, salary, boss = nil)
         super
         @employees = []
     end
 
     def bonus(multiplier)
-        queue = @employees
+        queue = @employees.dup
         sal_sum = 0
         until queue.empty?
         # @employees.inject(0) { |sum, emp| sum + emp.salary } * multiplier
@@ -41,8 +41,11 @@ if __FILE__ == $PROGRAM_NAME
     david = Employee.new("David", "TA", 10000, darren)
     ned.employees.push(darren)
     darren.employees.push(shawna, david)
+    p ned.employees
+    
 
     p ned.bonus(5)
     p darren.bonus(4)
     p david.bonus(3)
+    p ned.employees
 end
