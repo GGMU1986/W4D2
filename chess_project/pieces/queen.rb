@@ -4,9 +4,6 @@ require_relative "../modules/slideable.rb"
 class Queen < Piece
     include Slideable
 
-    def initialize
-
-    end
 
     # def moves
         
@@ -19,6 +16,7 @@ class Queen < Piece
 end
 
 if __FILE__ == $PROGRAM_NAME
+    
     queen = Queen.new
-    p queen.moves([0,0])
+    p queen.moves([2,3])
 end

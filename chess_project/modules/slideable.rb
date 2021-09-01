@@ -25,28 +25,41 @@ module Slideable
   
   
   
-  def moves(pos) # => [0, 0]
-    piece_dirs = self.move_dirs  # rook.move_dirs ==> :roo
-    # p piece_dirs
+  def moves
+
     possible_moves = []
-    cur_x, cur_y = pos
-    piece_dirs.each do |(dx, dy)|
-      # grow_unblocked_moves_dir(dx,dy)
-      new_position = [cur_x + dx, cur_y + dy]
-      possible_moves << new_position if new_position.all? { |coord| coord.between?(0,7)}
+    move_dirs.each do |(dx, dy)|
+      
+      moves_in_dir = grow_unblocked_moves_dir(dx,dy)
+      possible_moves += moves_in_dir 
     end
     possible_moves
-      
+    
   end
-
-
+  
+  
   private
-
+  
   def move_dirs
     raise NotImplementedError
   end
-
+  
   def grow_unblocked_moves_dir(dx,dy)
-    #[[0, 1], [1, 0], [1, 1]]
+    # p dx, dy
+    moves_in_dir = []
+    could_go_further = true
+    cur_x, cur_y = @pos
+    step = 1
+    while could_go_further
+    
+      new_position = [cur_x + step * dx, cur_y + step * dy]
+      if new_position.all? { |coord| coord.between?(0,7)} && @board[new_position] == @board[@null_piece]
+        moves_in_dir << new_position
+        step += 1
+      else
+        could_go_further = false
+      end
+    end
+    moves_in_dir
   end
 end
