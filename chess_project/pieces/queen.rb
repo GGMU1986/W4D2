@@ -1,4 +1,5 @@
 require_relative "piece.rb"
+require_relative "../modules/slideable.rb"
 
 class Queen < Piece
     include Slideable
@@ -13,8 +14,7 @@ class Queen < Piece
     # end
 
     def move_dirs
-        possible_dirs = horizontal_dirs + diagonal_dirs
-        puts "change"
+        horizontal_dirs + diagonal_dirs
     end
 end
 
