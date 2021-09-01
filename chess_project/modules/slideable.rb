@@ -25,10 +25,9 @@ module Slideable
   
   
   
-  def moves(pos)
-
-    piece_dirs = self.move_dirs  # rook.move_dirs ==> :rook
-    p piece_dirs
+  def moves(pos) # => [0, 0]
+    piece_dirs = self.move_dirs  # rook.move_dirs ==> :roo
+    # p piece_dirs
     possible_moves = []
     cur_x, cur_y = pos
     piece_dirs.each do |(dx, dy)|
@@ -48,6 +47,6 @@ module Slideable
   end
 
   def grow_unblocked_moves_dir(dx,dy)
-    
+    #[[0, 1], [1, 0], [1, 1]]
   end
 end
