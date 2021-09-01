@@ -14,6 +14,7 @@ class Queen < Piece
 
     def move_dirs
         possible_dirs = horizontal_dirs + diagonal_dirs
+        puts "change"
     end
 end
 
